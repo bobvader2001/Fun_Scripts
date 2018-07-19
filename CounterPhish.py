@@ -1,3 +1,8 @@
+#Author: bobvader2001
+#
+#Worked in my case but is very situation-specific so edit as required
+#My case was a btinternet email phishing site
+
 import requests
 import random
 import string
