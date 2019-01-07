@@ -23,6 +23,10 @@ def main():
         while(True):
             print("Requesting Stream Data...")
             data = requests.get("https://api.twitch.tv/kraken/streams/" + target_twitch, headers=headers).json()
+            if data["stream"] == None:
+                print("Channel not currently streaming!\n")
+                time.sleep(interval)
+                continue
             if youtube_id:
                 #If a YouTube ID is given, get the current viewers
                 youtube_viewers = requests.get(f"https://www.youtube.com/live_stats?v={youtube_id}").text
