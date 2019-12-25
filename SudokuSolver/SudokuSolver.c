@@ -21,7 +21,8 @@ void initialiseBoard(char * filename) //Populates the board array from the input
        counter++; //Increment the counter (used to identify the row in the board)
     }
     fclose (input); //Close the file
-  }else
+  }
+  else
   {
     printf("\nError: File not found\n\n");
     exit(1);
@@ -87,14 +88,20 @@ int checkWin() //Checks if the given array is a valid solution
     }
     if(checkZero(numbers1))
     {
-      for(int i = 1; i < 10; i++){numbers1[i] = i;}
+      for(int i = 1; i < 10; i++)
+      {
+        numbers1[i] = i;
+      }
     }else
     {
       return 0;
     }
     if(checkZero(numbers2))
     {
-      for(int i = 1; i < 10; i++){numbers2[i] = i;}
+      for(int i = 1; i < 10; i++)
+      {
+        numbers2[i] = i;
+      }
     }else
     {
       return 0;
@@ -122,7 +129,10 @@ int checkWin() //Checks if the given array is a valid solution
       }
       if(checkZero(numbers1))
       {
-        for(int i = 1; i < 10; i++){numbers1[i] = i;}
+        for(int i = 1; i < 10; i++)
+        {
+          numbers1[i] = i;
+        }
       }else
       {
         return 0;
@@ -170,9 +180,18 @@ int solvePuzzle(int input_board[9][9], int row, int column)
   {
     if(input_board[row][column] != 0)
     {
-      if((column + 1) < 9){return solvePuzzle(input_board, row, column+1);}
-      else if((row + 1) < 9){return solvePuzzle(input_board, row+1, column);}
-      else return 1;
+      if((column + 1) < 9)
+      {
+        return solvePuzzle(input_board, row, column+1);
+      }
+      else if((row + 1) < 9)
+      {
+        return solvePuzzle(input_board, row+1, 0);
+      }
+      else
+      {
+        return 1;
+      }
     }else
     {
       for(int i = 1; i < 10; i++)
@@ -182,12 +201,24 @@ int solvePuzzle(int input_board[9][9], int row, int column)
           input_board[row][column] = i;
           if((column + 1) < 9)
           {
-            if(solvePuzzle(input_board, row, column + 1)){return 1;}
-            else input_board[row][column] = 0;
+            if(solvePuzzle(input_board, row, column + 1))
+            {
+              return 1;
+            }
+            else 
+            {
+              input_board[row][column] = 0;
+            }
           }else if((row + 1) < 9)
           {
-            if(solvePuzzle(input_board, row + 1, 0)){return 1;}
-            else input_board[row][column] = 0;
+            if(solvePuzzle(input_board, row + 1, 0))
+            {
+              return 1;
+            }
+            else
+            {
+              input_board[row][column] = 0;
+            }
           }else
           {
             return 1;
