@@ -241,7 +241,7 @@ int main(int argc, char ** argv)
     exit(1);
   }
 
-  printf("\nReading input.txt...\n");
+  printf("\nReading input...\n");
   printf("Initialising board...\n");
   initialiseBoard(argv[1]);
   printf("Checking input...\n");
